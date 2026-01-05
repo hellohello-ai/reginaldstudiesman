@@ -4,6 +4,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import FavoriteButton from "@/components/FavoriteButton";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
+import type { ArticleRecord } from "@/lib/types";
 
 export default async function ArticlePage({
   params,
@@ -24,8 +25,9 @@ export default async function ArticlePage({
     notFound();
   }
 
-  const safeHtml = DOMPurify.sanitize(article.content_html ?? "");
-  const settings = article.settings ?? {};
+  const typedArticle = article as ArticleRecord;
+  const safeHtml = DOMPurify.sanitize(typedArticle.content_html ?? "");
+  const settings = typedArticle.settings ?? {};
   const readingLabel =
     settings.readingPace === "calm"
       ? "Calm"
@@ -33,9 +35,9 @@ export default async function ArticlePage({
         ? "Chaotic"
         : "Studious";
 
-  const authorName = Array.isArray(article.profiles)
-    ? article.profiles[0]?.display_name
-    : article.profiles?.display_name;
+  const authorName = Array.isArray(typedArticle.profiles)
+    ? typedArticle.profiles[0]?.display_name
+    : typedArticle.profiles?.display_name;
 
   return (
     <div className="mx-auto w-full max-w-5xl px-6 pb-20 pt-16">
@@ -56,22 +58,26 @@ export default async function ArticlePage({
               <p className="text-xs font-semibold uppercase tracking-[0.3em] text-black/50">
                 {settings.kicker ?? "Reginald Field Report"}
               </p>
-              <h1 className="text-4xl font-semibold">{article.title}</h1>
-              {article.subtitle ? (
-                <p className="text-lg text-black/70">{article.subtitle}</p>
+              <h1 className="text-4xl font-semibold">{typedArticle.title}</h1>
+              {typedArticle.subtitle ? (
+                <p className="text-lg text-black/70">
+                  {typedArticle.subtitle}
+                </p>
               ) : null}
               <p className="text-xs uppercase tracking-[0.3em] text-black/50">
                 {(authorName ?? "Anonymous") +
                   " - " +
-                  new Date(article.published_at ?? Date.now()).toLocaleDateString()}
+                  new Date(
+                    typedArticle.published_at ?? Date.now()
+                  ).toLocaleDateString()}
               </p>
             </div>
-            <FavoriteButton articleId={article.id} />
+            <FavoriteButton articleId={typedArticle.id} />
           </div>
           <div
             className="mt-6 h-72 rounded-[28px] bg-cover bg-center"
             style={{
-              backgroundImage: `url(${article.cover_url ??
+              backgroundImage: `url(${typedArticle.cover_url ??
                 "https://images.unsplash.com/photo-1469474968028-56623f02e42e?q=80&w=1200&auto=format&fit=crop"})`,
             }}
           />
