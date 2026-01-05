@@ -18,7 +18,7 @@ export default function SignUpPage() {
           href="/sign-in"
           className="text-sm font-semibold text-[var(--accent)]"
         >
-          Already registered? Sign in ->
+          Already registered? Sign in {"->"}
         </Link>
       </div>
       <div className="flex-1">

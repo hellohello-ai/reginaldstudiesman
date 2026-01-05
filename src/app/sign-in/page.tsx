@@ -19,7 +19,7 @@ export default function SignInPage() {
           href="/sign-up"
           className="text-sm font-semibold text-[var(--accent)]"
         >
-          Need an account? Create one ->
+          Need an account? Create one {"->"}
         </Link>
       </div>
       <div className="flex-1">

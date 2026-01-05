@@ -37,7 +37,7 @@ export default async function ArticlePage({
     <div className="mx-auto w-full max-w-5xl px-6 pb-20 pt-16">
       <div className="flex flex-col gap-6">
         <Link href="/articles" className="text-sm font-semibold text-black/60">
-          <- Back to studies
+          {"<-"} Back to studies
         </Link>
         <div
           className="rounded-[36px] bg-white/70 p-8 shadow-[var(--shadow)]"

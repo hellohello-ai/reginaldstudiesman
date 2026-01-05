@@ -32,7 +32,7 @@ export default function ArticleCard({ article }: ArticleCardProps) {
         </p>
       </div>
       <span className="text-sm font-semibold text-[var(--accent-2)]">
-        Read study ->
+        Read study {"->"}
       </span>
     </Link>
   );

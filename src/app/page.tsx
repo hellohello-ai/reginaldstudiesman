@@ -133,7 +133,7 @@ export default async function Home() {
                       : "Measuring cultural influence in cups of tea per minute."}
                 </p>
                 <span className="text-sm font-semibold text-[var(--accent)]">
-                  Learn more ->
+                  Learn more {"->"}
                 </span>
               </div>
             )
@@ -184,7 +184,7 @@ export default async function Home() {
                 </p>
               </div>
               <span className="text-sm font-semibold text-[var(--accent-2)]">
-                Read the study ->
+                Read the study {"->"}
               </span>
             </Link>
           ))}

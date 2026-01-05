@@ -19,7 +19,7 @@ export default function AuthorSignInPage() {
           href="/account"
           className="text-sm font-semibold text-[var(--accent)]"
         >
-          Request author access ->
+          Request author access {"->"}
         </Link>
       </div>
       <div className="flex-1">
