@@ -3,7 +3,7 @@ import { redirect } from "next/navigation";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 
 export default async function AuthorDashboardPage() {
-  const supabase = createServerSupabaseClient();
+  const supabase = await createServerSupabaseClient();
   const { data: authData } = await supabase.auth.getUser();
   if (!authData.user) {
     redirect("/author/sign-in");

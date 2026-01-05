@@ -7,7 +7,7 @@ export default async function AuthorEditorPage({
 }: {
   searchParams?: { id?: string };
 }) {
-  const supabase = createServerSupabaseClient();
+  const supabase = await createServerSupabaseClient();
   const { data: authData } = await supabase.auth.getUser();
   if (!authData.user) {
     redirect("/author/sign-in");

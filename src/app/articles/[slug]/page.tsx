@@ -11,7 +11,7 @@ export default async function ArticlePage({
 }: {
   params: { slug: string };
 }) {
-  const supabase = createServerSupabaseClient();
+  const supabase = await createServerSupabaseClient();
   const { data: article } = await supabase
     .from("articles")
     .select(

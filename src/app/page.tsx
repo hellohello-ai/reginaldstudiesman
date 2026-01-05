@@ -3,7 +3,7 @@ import { createServerSupabaseClient } from "@/lib/supabase/server";
 import type { ArticleRecord } from "@/lib/types";
 
 export default async function Home() {
-  const supabase = createServerSupabaseClient();
+  const supabase = await createServerSupabaseClient();
   const { data: featured } = await supabase
     .from("articles")
     .select(
