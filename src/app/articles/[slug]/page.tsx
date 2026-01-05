@@ -33,6 +33,10 @@ export default async function ArticlePage({
         ? "Chaotic"
         : "Studious";
 
+  const authorName = Array.isArray(article.profiles)
+    ? article.profiles[0]?.display_name
+    : article.profiles?.display_name;
+
   return (
     <div className="mx-auto w-full max-w-5xl px-6 pb-20 pt-16">
       <div className="flex flex-col gap-6">
@@ -57,7 +61,7 @@ export default async function ArticlePage({
                 <p className="text-lg text-black/70">{article.subtitle}</p>
               ) : null}
               <p className="text-xs uppercase tracking-[0.3em] text-black/50">
-                {(article.profiles?.display_name ?? "Anonymous") +
+                {(authorName ?? "Anonymous") +
                   " - " +
                   new Date(article.published_at ?? Date.now()).toLocaleDateString()}
               </p>

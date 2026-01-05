@@ -172,7 +172,9 @@ export default async function Home() {
                   }}
                 />
                 <span className="text-xs font-semibold uppercase tracking-[0.3em] text-black/50">
-                  {(article.profiles?.display_name ?? "Anonymous") +
+                  {((Array.isArray(article.profiles)
+                    ? article.profiles[0]?.display_name
+                    : article.profiles?.display_name) ?? "Anonymous") +
                     " - " +
                     new Date(article.published_at ?? Date.now()).toLocaleDateString()}
                 </span>

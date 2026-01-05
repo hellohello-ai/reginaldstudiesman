@@ -23,7 +23,12 @@ export type ArticleRecord = {
   published_at: string | null;
   tags: string[] | null;
   settings: ArticleSettings | null;
-  profiles?: {
-    display_name: string | null;
-  } | null;
+  profiles?:
+    | {
+        display_name: string | null;
+      }
+    | {
+        display_name: string | null;
+      }[]
+    | null;
 };

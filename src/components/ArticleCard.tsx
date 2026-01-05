@@ -6,6 +6,10 @@ type ArticleCardProps = {
 };
 
 export default function ArticleCard({ article }: ArticleCardProps) {
+  const authorName = Array.isArray(article.profiles)
+    ? article.profiles[0]?.display_name
+    : article.profiles?.display_name;
+
   return (
     <Link
       href={`/articles/${article.slug}`}
@@ -20,7 +24,7 @@ export default function ArticleCard({ article }: ArticleCardProps) {
       />
       <div className="flex-1 space-y-3">
         <span className="text-xs font-semibold uppercase tracking-[0.3em] text-black/50">
-          {(article.profiles?.display_name ?? "Anonymous") +
+          {(authorName ?? "Anonymous") +
             " - " +
             new Date(article.published_at ?? Date.now()).toLocaleDateString()}
         </span>
