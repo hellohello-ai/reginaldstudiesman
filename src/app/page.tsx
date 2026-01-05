@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
+import type { ArticleRecord } from "@/lib/types";
 
 export default async function Home() {
   const supabase = createServerSupabaseClient();
@@ -157,7 +158,7 @@ export default async function Home() {
           </Link>
         </div>
         <div className="mt-8 grid gap-6 md:grid-cols-3">
-          {(featured ?? []).map((article) => (
+          {((featured ?? []) as ArticleRecord[]).map((article) => (
             <Link
               key={article.id}
               href={`/articles/${article.slug}`}
